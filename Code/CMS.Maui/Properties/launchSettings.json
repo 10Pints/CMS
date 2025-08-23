@@ -1,0 +1,27 @@
+{
+   "profiles": {
+      "Windows Machine": {
+         "commandName": "Project",
+         "nativeDebugging": false
+      },
+      "Windows MSIX": {
+         "commandName": "MsixPackage",
+         "nativeDebugging": false
+      },
+      "Android Emulator": {
+         "commandName": "Project",
+         "nativeDebugging": false,
+         "dotnetRunMessages": true
+      },
+      "iOS Simulator": {
+         "commandName": "Project",
+         "nativeDebugging": false,
+         "dotnetRunMessages": true
+      },
+      "Mac Catalyst": {
+         "commandName": "Project",
+         "nativeDebugging": false,
+         "dotnetRunMessages": true
+      }
+   }
+}
