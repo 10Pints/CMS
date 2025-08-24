@@ -5,17 +5,16 @@ namespace CMS.Maui.Services;
 
 public class CustomerService : ICustomerService
 {
-    private readonly IHttpClientFactory _httpClientFactory;
+    private readonly HttpClient _httpClient;
 
     public CustomerService(IHttpClientFactory httpClientFactory)
     {
-        _httpClientFactory = httpClientFactory;
-    }
+         _httpClient = httpClientFactory.CreateClient("CMS.Api");
+   }
 
     public async Task<IEnumerable<CustomerDto>> GetAllCustomersAsync()
     {
-        var client = _httpClientFactory.CreateClient("CMS.Api");
-        var result = await client.GetFromJsonAsync<List<CustomerDto>>("api/customers");
+        var result = await _httpClient.GetFromJsonAsync<List<CustomerDto>>("api/customers");
         return result ?? [];
     }
 }
