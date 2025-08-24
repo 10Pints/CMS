@@ -8,6 +8,7 @@
       <DataTemplate>
         <StackLayout>
           <Label Text="{Binding Name}" />
+          <Button Text="Load Customers" Command="{Binding LoadCustomersCommand}" />
         </StackLayout>
       </DataTemplate>
     </CollectionView.ItemTemplate>
