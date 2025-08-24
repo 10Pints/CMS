@@ -1,0 +1,17 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "CMS.Api\\CMS.Api.csproj",
+        "Action": "Start",
+        "DebugTarget": "CMS.Api"
+      },
+      {
+        "Path": "CMS.Maui\\CMS.Maui.csproj",
+        "Action": "Start",
+        "DebugTarget": "Windows Machine"
+      }
+    ]
+  }
+]

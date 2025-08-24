@@ -1,24 +1,18 @@
-﻿using CMS.Maui.Services;
+﻿using Microsoft.Maui.Controls;
 using CMS.Maui.Views;
 
 namespace CMS.Maui;
 
 public partial class MainPage : ContentPage
 {
-   private readonly ICustomerService _customerService;
-
-   public MainPage(ICustomerService customerService)
+   public MainPage()
    {
       InitializeComponent();
-      _customerService = customerService;
+      // BindingContext = new CustomersViewModel(); // Add after creating ViewModel
    }
 
-   private async void OnShowCustomersClicked(object sender, EventArgs e)
+   private async void OnGoToCustomersClicked(object sender, EventArgs e)
    {
-      // Fetch data
-      IEnumerable<Shared.DTOs.CustomerDto> customers = await _customerService.GetAllCustomersAsync();
-
-      // Navigate to CustomersPage, passing the data
-      await Navigation.PushAsync(new CustomersPage(customers));
+      await Navigation.PushAsync(new CustomersPage());
    }
 }

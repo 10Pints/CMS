@@ -1,14 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CMS.Maui.MainPage">
-   <VerticalStackLayout Padding="20">
-      <Label Text="Welcome to CMS.Maui"
-               FontSize="24"
-               HorizontalOptions="Center" />
-
-      <Button Text="Show Customers"
-                Clicked="OnShowCustomersClicked"
-                HorizontalOptions="Center" />
-   </VerticalStackLayout>
+             x:Class="CMS.Maui.MainPage"
+             Title="Commissioning Management System">
+   <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+      <Label Text="Welcome to CMS for Refinery Projects" FontSize="Title" Margin="0,0,0,20" />
+      <Button Text="View Customers" Clicked="OnGoToCustomersClicked" />
+   </StackLayout>
 </ContentPage>

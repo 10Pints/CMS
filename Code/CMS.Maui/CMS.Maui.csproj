@@ -24,8 +24,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-      <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
-      <PackageReference Include="Refit.HttpClientFactory" Version="8.0.0" />
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
@@ -37,23 +35,27 @@
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 
-	<ItemGroup>
-		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.1" />
-	</ItemGroup>
-
+   <ItemGroup>
+      <PackageReference Include="Microsoft.Maui.Controls" Version="8.0.92" />
+      <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.1" />
+      <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+      <PackageReference Include="Refit" Version="8.0.0" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.1" />
+      <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.7.240802000" />
+   </ItemGroup>
+   
 	<ItemGroup>
 	  <ProjectReference Include="..\CMS.Domain\CMS.Domain.csproj" />
 	  <ProjectReference Include="..\CMS.Shared\CMS.Shared.csproj" />
 	</ItemGroup>
    <ItemGroup>
-      <Compile Update="CustomersPage.xaml.cs">
+      <Compile Update="CustomerPage.xaml.cs">
          <DependentUpon>CustomersPage.xaml</DependentUpon>
       </Compile>
    </ItemGroup>
    <ItemGroup>
-      <MauiXaml Update="CustomersPage.xaml">
+      <MauiXaml Update="CustomerPage.xaml">
          <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
    </ItemGroup>
@@ -61,7 +63,7 @@
       <MauiXaml Update="MainPage.xaml">
          <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
-      <MauiXaml Update="CustomersPage.xaml">
+      <MauiXaml Update="CustomerPage.xaml">
          <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
    </ItemGroup>
