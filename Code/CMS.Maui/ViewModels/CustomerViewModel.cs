@@ -1,4 +1,5 @@
 ﻿using CMS.Shared; // For IMyApiClient
+using CMS.Shared.DTOs;
 
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -12,7 +13,7 @@ public partial class CustomerViewModel : ObservableObject
    private readonly IMyApiClient _apiClient;
 
    [ObservableProperty]
-   private ObservableCollection<Customer> customers;
+   private ObservableCollection<CustomerDto> customers;
 
    public CustomerViewModel(IMyApiClient apiClient)
    {
@@ -24,6 +25,6 @@ public partial class CustomerViewModel : ObservableObject
    private async Task LoadCustomersAsync()
    {
       var customers = await _apiClient.GetCustomers();
-      Customers = new ObservableCollection<Customer>(customers);
+      Customers = new ObservableCollection<CustomerDto>(customers);
    }
 }

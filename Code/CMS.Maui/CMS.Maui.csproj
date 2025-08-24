@@ -36,13 +36,13 @@
 	</ItemGroup>
 
    <ItemGroup>
-      <PackageReference Include="Microsoft.Maui.Controls" Version="*" />
+      <PackageReference Include="Microsoft.Maui.Controls" Version="8.0.100" />
       <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.1" />
       <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
       <PackageReference Include="Refit" Version="8.0.0" />
-      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
       <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.1" />
-      <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.7.240802000" />
+      <PackageReference Include="Refit.HttpClientFactory" Version="8.0.0" />
    </ItemGroup>
    
 	<ItemGroup>
