@@ -51,7 +51,7 @@
 	</ItemGroup>
    <ItemGroup>
       <Compile Update="CustomerPage.xaml.cs">
-         <DependentUpon>CustomersPage.xaml</DependentUpon>
+         <DependentUpon>CustomerPage.xaml</DependentUpon>
       </Compile>
    </ItemGroup>
    <ItemGroup>
