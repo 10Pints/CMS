@@ -1,4 +1,4 @@
-﻿using Microsoft.Maui.Controls;
+﻿//using Microsoft.Maui.Controls;
 
 using System.Globalization;
 
@@ -9,7 +9,7 @@ namespace CMS.Maui.Converters
       public Color EvenColor { get; set; } = Colors.White;
       public Color OddColor { get; set; } = Color.FromArgb("#F8F9FA");
 
-      public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+      public object Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
       {
          // If we can't get the index, return default color
          if (value is not null && parameter is BindingContextWrapper wrapper)
@@ -20,7 +20,7 @@ namespace CMS.Maui.Converters
          return EvenColor;
       }
 
-      public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+      public object ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
       {
          throw new NotImplementedException();
       }
@@ -30,6 +30,6 @@ namespace CMS.Maui.Converters
    public class BindingContextWrapper
    {
       public int Index { get; set; }
-      public object Item { get; set; }
+      public object? Item { get; set; }
    }
 }

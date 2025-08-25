@@ -4,97 +4,123 @@
              xmlns:converters="clr-namespace:CMS.Maui.Converters"
              x:Class="CMS.Maui.CustomerPage"
              Title="Customers">
-    
-    <ContentPage.Resources>
-        <converters:RowColorConverter x:Key="RowColorConverter" />
-    </ContentPage.Resources>
-    
-   <StackLayout Margin="20">
-      <!-- Header Grid -->
-      <Grid BackgroundColor="#512BD4" Padding="10">
-         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.5*" />
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*" />
-         </Grid.ColumnDefinitions>
 
-         <Label Text="ID" 
-                   TextColor="White" 
-                   FontAttributes="Bold"
-                   HorizontalOptions="Center"/>
+   <ContentPage.Resources>
+      <converters:RowColorConverter x:Key="RowColorConverter" />
+   </ContentPage.Resources>
 
-         <Label Text="Name" 
-                   TextColor="White" 
-                   FontAttributes="Bold"
-                   Grid.Column="1"
-                   HorizontalOptions="Center"/>
+   <StackLayout Margin="20" Spacing="0">
+      <!-- Spacing=0 removes gap between header and data -->
 
-         <Label Text="Email" 
-                   TextColor="White" 
-                   FontAttributes="Bold"
-                   Grid.Column="2"
-                   HorizontalOptions="Center"/>
+      <!-- HEADER GRID - Using exact same column widths as data grid -->
+      <Grid Padding="1" BackgroundColor="Black">
+         <Grid BackgroundColor="#512BD4" Padding="0">
+            <!-- Padding=0 for tight alignment -->
+            <!-- CRITICAL: Same column definitions as data grid -->
+            <Grid.ColumnDefinitions>
+               <ColumnDefinition Width="80" />
+               <ColumnDefinition Width="0.5*" />
+               <ColumnDefinition Width="0.5*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- ID Header -->
+            <Frame Padding="10,5" BackgroundColor="Transparent" BorderColor="Black" HasShadow="False"
+                       Margin="0" HorizontalOptions="Fill">
+               <Label Text="ID" 
+                           TextColor="White"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+            </Frame>
+
+            <!-- Name Header -->
+            <Frame Grid.Column="1" Padding="10,5" BackgroundColor="Transparent" BorderColor="Black" 
+                       HasShadow="False" Margin="0" HorizontalOptions="Fill">
+               <Label Text="Name" 
+                           TextColor="White"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Start"
+                           VerticalOptions="Center"/>
+            </Frame>
+
+            <!-- Email Header -->
+            <Frame Grid.Column="2" Padding="10,5" BackgroundColor="Transparent" BorderColor="Black" 
+                       HasShadow="False" Margin="0" HorizontalOptions="Fill">
+               <Label Text="Email" 
+                           TextColor="White"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Start"
+                           VerticalOptions="Center"/>
+            </Frame>
+         </Grid>
       </Grid>
 
-      <!-- Customers List with Alternating Colors -->
-      <CollectionView ItemsSource="{Binding Customers}">
+      <!-- DATA GRID - CollectionView with identical column structure -->
+      <CollectionView ItemsSource="{Binding Customers}" Margin="0,-1,0,0">
          <CollectionView.ItemTemplate>
             <DataTemplate>
-               <Grid Padding="10"
-                  BackgroundColor="{Binding ., 
-                  Converter={StaticResource RowColorConverter},
-                  ConverterParameter={Binding Index}}">
-                  <Grid.ColumnDefinitions>
-                     <ColumnDefinition Width="0.5*" />
-                     <ColumnDefinition Width="1*" />
-                     <ColumnDefinition Width="1*" />
-                  </Grid.ColumnDefinitions>
+               <Grid Padding="1" BackgroundColor="Black">
+                  <Grid Padding="0" 
+                              BackgroundColor="{Binding ., 
+                              Converter={StaticResource RowColorConverter},
+                              ConverterParameter={Binding Index}}">
+                     <!-- CRITICAL: Same column definitions as header grid -->
+                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="0.5*" />
+                        <ColumnDefinition Width="0.5*" />
+                     </Grid.ColumnDefinitions>
 
-                  <!-- Customer ID -->
-                  <Label Text="{Binding CustomerId}" 
-                               FontSize="14"
-                               HorizontalOptions="Center"
-                               VerticalOptions="Center"/>
+                     <!-- Customer ID -->
+                     <Frame Padding="10,5" BackgroundColor="Transparent" BorderColor="Black" 
+                                   HasShadow="False" Margin="0" HorizontalOptions="Fill">
+                        <Label Text="{Binding CustomerId}" 
+                                       FontSize="14"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"/>
+                     </Frame>
 
-                  <!-- Name -->
-                  <Label Text="{Binding Name}" 
-                               FontSize="14"
-                               Grid.Column="1"
-                               HorizontalOptions="Start"
-                               VerticalOptions="Center"/>
+                     <!-- Name -->
+                     <Frame Grid.Column="1" Padding="10,5" BackgroundColor="Transparent" BorderColor="Black" 
+                                   HasShadow="False" Margin="0" HorizontalOptions="Fill">
+                        <Label Text="{Binding Name}" 
+                                       FontSize="14"
+                                       HorizontalOptions="Start"
+                                       VerticalOptions="Center"/>
+                     </Frame>
 
-                  <!-- Email (if available) -->
-                  <Label Text="{Binding Email}" 
-                               FontSize="12"
-                               TextColor="Gray"
-                               Grid.Column="2"
-                               HorizontalOptions="Start"
-                               VerticalOptions="Center"/>
+                     <!-- Email -->
+                     <Frame Grid.Column="2" Padding="10,5" BackgroundColor="Transparent" BorderColor="Black" 
+                                   HasShadow="False" Margin="0" HorizontalOptions="Fill">
+                        <Label Text="{Binding Email}" 
+                                       FontSize="12"
+                                       TextColor="Gray"
+                                       HorizontalOptions="Start"
+                                       VerticalOptions="Center"/>
+                     </Frame>
+                  </Grid>
                </Grid>
             </DataTemplate>
          </CollectionView.ItemTemplate>
 
-         <!-- Alternating row colors -->
          <CollectionView.ItemsLayout>
-            <LinearItemsLayout Orientation="Vertical" ItemSpacing="1" />
-            </CollectionView.ItemsLayout>
+            <LinearItemsLayout Orientation="Vertical" ItemSpacing="0" />
+            <!-- No spacing between rows -->
+         </CollectionView.ItemsLayout>
       </CollectionView>
 
       <!-- Load Button -->
       <Button Text="Load Customers" 
-      Command="{Binding LoadCustomersCommand}" 
+                Command="{Binding LoadCustomersCommand}" 
                 BackgroundColor="#512BD4"
+                WidthRequest="200"
+                HorizontalOptions="Center"
                 TextColor="White"
                 Margin="0,20,0,0"
                 HeightRequest="50"
                 CornerRadius="10"/>
-
-      <Button Text="Load Customers" 
-              Command="{Binding LoadCustomersCommand}" 
-              BackgroundColor="#512BD4"
-              TextColor="White"
-              Margin="0,20,0,0"
-              HeightRequest="50"
-              CornerRadius="10"/>
    </StackLayout>
 </ContentPage>
