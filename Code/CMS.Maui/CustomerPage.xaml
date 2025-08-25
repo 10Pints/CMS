@@ -3,14 +3,24 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CMS.Maui.CustomerPage"
              Title="Customers">
-  <CollectionView ItemsSource="{Binding CustomerDto}">
-    <CollectionView.ItemTemplate>
-      <DataTemplate>
-        <StackLayout>
-          <Label Text="{Binding Name}" />
-          <Button Text="Load Customers" Command="{Binding LoadCustomersCommand}" />
-        </StackLayout>
-      </DataTemplate>
-    </CollectionView.ItemTemplate>
-  </CollectionView>
+
+   <StackLayout>
+      <!-- Changed from CustomerDto to Customers -->
+      <CollectionView ItemsSource="{Binding Customers}">
+         <CollectionView.ItemTemplate>
+            <DataTemplate>
+               <StackLayout Padding="10">
+                  <Label Text="{Binding Name}" FontSize="16" />
+                  <!-- Add more fields as needed -->
+                  <Label Text="{Binding Email}" FontSize="14" TextColor="Gray" />
+               </StackLayout>
+            </DataTemplate>
+         </CollectionView.ItemTemplate>
+      </CollectionView>
+
+      <Button Text="Load Customers" 
+                Command="{Binding LoadCustomersCommand}" 
+                VerticalOptions="End"
+                Margin="20" />
+   </StackLayout>
 </ContentPage>

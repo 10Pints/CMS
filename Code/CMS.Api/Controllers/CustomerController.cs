@@ -17,7 +17,7 @@ public class CustomerController : ControllerBase
 
    public CustomerController(IConfiguration configuration)
    {
-      _connectionString = configuration.GetConnectionString("DefaultConnection");
+      _connectionString = configuration.GetConnectionString("CmsDatabase");
    }
 
    [HttpGet]
@@ -37,7 +37,7 @@ public class CustomerController : ControllerBase
                {
                   customers.Add(new CustomerDto
                   {
-                     Id = reader.GetInt32("Id"),
+                     CustomerId = reader.GetInt32("CustomerId"),
                      Name = reader.GetString("Name")
                   });
                }

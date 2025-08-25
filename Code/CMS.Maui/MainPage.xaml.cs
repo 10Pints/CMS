@@ -1,20 +1,29 @@
 ﻿using Microsoft.Maui.Controls;
-//using CMS.Maui.Views;
 
 namespace CMS.Maui;
 
 public partial class MainPage : ContentPage
 {
-   public MainPage()
+   private readonly IServiceProvider _serviceProvider;
+
+   public MainPage(IServiceProvider serviceProvider)
    {
       InitializeComponent();
       //BindingContext = new CustomerViewModel(); // Add after creating ViewModel
+      _serviceProvider = serviceProvider;
    }
 
    private async void OnGoToCustomersClicked(object sender, EventArgs e)
    {
       // MAUI will automatically resolve CustomerPage with its dependencies
-      var customerPage = Handler?.MauiContext?.Services.GetService<CustomerPage>() ?? throw new Exception("E1023: could not resolve CustomerPage");
+      IViewHandler? handler = Handler;
+      var mauiContext = handler?.MauiContext;
+      CustomerPage? customerPage = mauiContext?.Services.GetService<CustomerPage>();
+
+      // customerPage is null here at the moment -
+      if (customerPage == null)
+         throw new Exception("E1023: could not resolve CustomerPage");
+
       await Navigation.PushAsync(customerPage);
    }
 }

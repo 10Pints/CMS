@@ -1,28 +1,17 @@
-﻿using CMS.Shared;
-
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Maui.Controls;
-using Microsoft.Maui.Controls.Hosting;
-using Microsoft.Maui.Hosting;
-
-using Refit;
+﻿//using CMS.Shared;
+//using Microsoft.Extensions.DependencyInjection;
+//using Microsoft.Maui.Controls;
 
 namespace CMS.Maui;
 
 public partial class App : Application
 {
-   public App()
+   public App(IServiceProvider serviceProvider)
    {
       InitializeComponent();
 
-      var services = new ServiceCollection();
-      services.AddSingleton<MainPage>();
-      services.AddSingleton<CustomerPage>();
-      services.AddSingleton<CustomerViewModel>();
-      services.AddRefitClient<IMyApiClient>()
-          .ConfigureHttpClient(c => c.BaseAddress = new Uri("https://localhost:5001"));
-      var serviceProvider = services.BuildServiceProvider();
-
-      MainPage = new NavigationPage(serviceProvider.GetService<MainPage>());
+      // Clean and simple - just set the main page
+      // Services are already configured in MauiProgram.cs
+      MainPage = new NavigationPage(serviceProvider.GetRequiredService<MainPage>());
    }
 }

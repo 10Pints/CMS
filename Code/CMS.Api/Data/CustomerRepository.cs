@@ -30,7 +30,7 @@ public class CustomerRepository
       {
          customers.Add(new CustomerDto
          {
-            Id = reader.GetInt32(0),
+            CustomerId = reader.GetInt32(0),
             Name = reader.GetString(1)
          });
       }

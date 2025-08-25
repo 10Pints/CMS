@@ -1,10 +1,8 @@
-﻿using CMS.Domain.Entities;
+﻿//using CMS.Domain.Entities;
 using CMS.Shared; // For IMyApiClient
 using CMS.Shared.DTOs;
-
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-
 using System.Collections.ObjectModel;
 
 namespace CMS.Maui;
@@ -24,8 +22,8 @@ public partial class CustomerViewModel : ObservableObject
 
    public CustomerViewModel(IMyApiClient apiClient)
    {
-      _customers = new ObservableCollection<CustomerDto>();
       _apiClient = apiClient;
+      _customers = new ObservableCollection<CustomerDto>();
       //LoadCustomersCommand = new AsyncRelayCommand(LoadCustomersAsync);
    }
 
