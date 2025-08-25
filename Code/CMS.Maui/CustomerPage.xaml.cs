@@ -9,7 +9,6 @@ public partial class CustomerPage : ContentPage
    public CustomerPage(CustomerViewModel viewModel)
    {
       InitializeComponent();
-      //CustomersList.ItemsSource = customers;
       BindingContext = viewModel;
    }
 }
