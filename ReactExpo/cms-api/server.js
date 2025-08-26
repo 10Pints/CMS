@@ -3,22 +3,28 @@ const sql = require('mssql');
 const app = express();
 
 const dbConfig = {
-  server: '127.0.0.1', // '192.168.254.103', // Your machine’s IP,  '127.0.0.1' is local host
+  server: '192.168.254.103', // Changed from 127.0.0.1 to match Android
   port: 1433,
-  database: 'CMS', // Your database name
+  database: 'CMS',
   user: 'sa',
-  password: 'Noemi780619', // Set in SSMS
+  password: 'Noemi780619',
   options: {
-//    trustedConnection: true,
     enableArithAbort: true,
-//    encrypt: true,
-    trustServerCertificate: true,
     connectTimeout: 30000,
+    encrypt: true, // Explicitly enable encryption
+    trustServerCertificate: true, // Trust self-signed certificate (dev only)
   },
-  
 };
 
 app.use(express.json());
+
+// Enable CORS
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*'); // Allow all origins (restrict in production)
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
 
 app.get('/api/customers', async (req, res) => {
   try {
